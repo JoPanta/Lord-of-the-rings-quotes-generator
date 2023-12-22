@@ -36,5 +36,8 @@ try:
 except (ValueError, RuntimeError, TypeError, NameError):
     wiki_link = None
 
-print(movie, wiki_link)
+print(quote)
+print(character)
+print(movie)
+print(wiki_link)
 
