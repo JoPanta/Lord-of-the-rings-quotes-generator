@@ -1,9 +1,15 @@
 import requests
 from random import randint
+from flask import Flask, abort, render_template, redirect, url_for, flash, request
+import flask_bootstrap
+
 
 URL = "https://the-one-api.dev/v2/"
 API_KEY = "c1JSdFXNxqBnlRC1Xh3R"
 headers = {'Authorization': 'Bearer c1JSdFXNxqBnlRC1Xh3R'}
+
+
+app = Flask(__name__, static_url_path='/static')
 
 quote_data = requests.get(url=f"{URL}/quote", headers=headers)
 quote_data.raise_for_status()
@@ -37,7 +43,14 @@ except (ValueError, RuntimeError, TypeError, NameError):
     wiki_link = None
 
 print(quote)
-print(character)
+print(character_json)
 print(movie)
 print(wiki_link)
 
+
+@app.route('/')
+def home():
+    return render_template('index.html', quote=quote, character=character, movie=movie, link=wiki_link)
+
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=False)

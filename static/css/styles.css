@@ -1,0 +1,11 @@
+body {
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
+    background-position: center top 50%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
