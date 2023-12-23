@@ -4,6 +4,10 @@ body {
     background-position: center top 50%;
 }
 
+h1, h3 {
+    font-family: 'MedievalSharp', cursive;
+}
+
 a {
     text-decoration: none;
     color: inherit;

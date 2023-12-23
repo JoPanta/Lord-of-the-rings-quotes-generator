@@ -7,13 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LOTR Fun Facts</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/styles.css">>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
 </head>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
     <div class="col-md-6 p-lg-5 mx-auto my-0">
       <h1 class="display-3 fw-bold text-warning my-0">The Lord of The Rings</h1>
-      <h3 class="fw-normal mb-3 text-warning">Quote Generator</h3>
+      <h3 class="fw-normal mb-3 text-warning fs-1">Quote Generator</h3>
       <div class="d-flex gap-3 justify-content-center lead fw-normal">
       </div>
     </div>
@@ -26,17 +29,25 @@
     </div>
 
     <div class="text-secondary px-4 text-center py-2">
-    <div class="py-5">
-        <a href="{{ link }}" target="_blank"><h1 class="display-5 fw-bold text-white">{{ character }}</h1></a>
-      <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4 text-white">{{ quote }}</p>
-        <p class="fs-6 mb-4 text-white">{{ movie }}</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
+        <div class="py-5">
+            {% if character == "MINOR_CHARACTER" %}
+            <h1 class="display-5 fw-bold text-white">Minor Character</h1>
+            {% else %}
+            <a href="{{ link }}" target="_blank"><h1 class="display-5 fw-bold text-white">{{ character }}</h1></a>
+            {% endif %}
+
+            <div class="col-lg-6 mx-auto">
+            <p class="fs-4 mb-4 text-white">{{ quote }}</p>
+            <p class="fs-6 mb-4 text-white">{{ movie }}</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <form method="post" action="{{ url_for('home') }}" id="quoteForm">
+                <input type="hidden" name="generate_quote" value="true">
+                <button type="submit" class="btn btn btn-outline-warning btn-lg px-4 me-sm-3 fw-bold">Generate Quote</button>
+                </form>
+            </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
